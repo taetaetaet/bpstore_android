@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bpstore_frag"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/arpuFragment"
+        android:name="com.example.bpstore_test.ui.fragment.ArpuFragment"
+        android:label="fragment_arpu"
+        tools:layout="@layout/fragment_arpu" >
+        <action
+            android:id="@+id/action_arpuFragment_to_etcFragment"
+            app:destination="@id/etcFragment" />
+        <action
+            android:id="@+id/action_arpuFragment_to_lgFragment"
+            app:destination="@id/lgFragment" />
+        <action
+            android:id="@+id/action_arpuFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_arpuFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_arpuFragment_to_dangerFragment"
+            app:destination="@id/dangerFragment" />
+        <action
+            android:id="@+id/action_arpuFragment_self"
+            app:destination="@id/arpuFragment" />
+        <action
+            android:id="@+id/action_arpuFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.example.bpstore_test.ui.fragment.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" >
+        <action
+            android:id="@+id/action_addressFragment_to_dangerFragment"
+            app:destination="@id/dangerFragment" />
+        <action
+            android:id="@+id/action_addressFragment_to_etcFragment"
+            app:destination="@id/etcFragment" />
+        <action
+            android:id="@+id/action_addressFragment_to_arpuFragment"
+            app:destination="@id/arpuFragment" />
+        <action
+            android:id="@+id/action_addressFragment_to_lgFragment"
+            app:destination="@id/lgFragment" />
+        <action
+            android:id="@+id/action_addressFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_addressFragment_self"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_addressFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lgFragment"
+        android:name="com.example.bpstore_test.ui.fragment.LgFragment"
+        android:label="fragment_lg"
+        tools:layout="@layout/fragment_lg" >
+        <action
+            android:id="@+id/action_lgFragment_to_arpuFragment"
+            app:destination="@id/arpuFragment" />
+        <action
+            android:id="@+id/action_lgFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_lgFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_lgFragment_to_dangerFragment"
+            app:destination="@id/dangerFragment" />
+        <action
+            android:id="@+id/action_lgFragment_to_etcFragment"
+            app:destination="@id/etcFragment" />
+        <action
+            android:id="@+id/action_lgFragment_self"
+            app:destination="@id/lgFragment" />
+        <action
+            android:id="@+id/action_lgFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/etcFragment"
+        android:name="com.example.bpstore_test.ui.fragment.EtcFragment"
+        android:label="fragment_etc"
+        tools:layout="@layout/fragment_etc" >
+        <action
+            android:id="@+id/action_etcFragment_to_arpuFragment"
+            app:destination="@id/arpuFragment" />
+        <action
+            android:id="@+id/action_etcFragment_to_lgFragment"
+            app:destination="@id/lgFragment" />
+        <action
+            android:id="@+id/action_etcFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_etcFragment_to_dangerFragment"
+            app:destination="@id/dangerFragment" />
+        <action
+            android:id="@+id/action_etcFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_etcFragment_self"
+            app:destination="@id/etcFragment" />
+        <action
+            android:id="@+id/action_etcFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dangerFragment"
+        android:name="com.example.bpstore_test.ui.fragment.DangerFragment"
+        android:label="fragment_danger"
+        tools:layout="@layout/fragment_danger" >
+        <action
+            android:id="@+id/action_dangerFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_dangerFragment_to_etcFragment"
+            app:destination="@id/etcFragment" />
+        <action
+            android:id="@+id/action_dangerFragment_self"
+            app:destination="@id/dangerFragment" />
+        <action
+            android:id="@+id/action_dangerFragment_to_arpuFragment"
+            app:destination="@id/arpuFragment" />
+        <action
+            android:id="@+id/action_dangerFragment_to_lgFragment"
+            app:destination="@id/lgFragment" />
+        <action
+            android:id="@+id/action_dangerFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_dangerFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.bpstore_test.ui.fragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_etcFragment"
+            app:destination="@id/etcFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_arpuFragment"
+            app:destination="@id/arpuFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_lgFragment"
+            app:destination="@id/lgFragment" />
+        <action
+            android:id="@+id/action_historyFragment_self"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_dangerFragment"
+            app:destination="@id/dangerFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.bpstore_test.ui.fragment.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_firstFragment_to_lgFragment"
+            app:destination="@id/lgFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_arpuFragment"
+            app:destination="@id/arpuFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_dangerFragment"
+            app:destination="@id/dangerFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_etcFragment"
+            app:destination="@id/etcFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_firstFragment_self"
+            app:destination="@id/firstFragment" />
+    </fragment>
+</navigation>
