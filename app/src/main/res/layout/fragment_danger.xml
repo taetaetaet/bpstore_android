@@ -15,7 +15,6 @@
         android:background="#54aec6">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:background="#ff19"
@@ -44,7 +43,6 @@
         android:background="#54aec6">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:background="#ff19"
@@ -96,6 +94,7 @@
             android:textColorHint="@color/black"
             >
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dangerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="상호명"
@@ -116,6 +115,7 @@
             android:textColorHint="@color/black"
             >
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bsNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="사업자 번호"
@@ -136,6 +136,7 @@
             android:textColorHint="@color/black"
             >
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/rNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="법인번호(주민번호)"
@@ -155,12 +156,24 @@
             android:textColorHint="@color/black"
             >
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="휴대폰번호"
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="저장"
+            android:fontFamily="@font/pretendard_medium"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FF19"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 

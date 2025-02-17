@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation ("com.google.android.material:material:1.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
     implementation(libs.androidx.fragment.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

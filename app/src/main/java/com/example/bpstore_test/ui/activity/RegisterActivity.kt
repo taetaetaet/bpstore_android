@@ -7,8 +7,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bpstore_test.R
-import com.example.bpstore_test.model.User_data
-import com.example.bpstore_test.network.RetrofitClient
+import com.example.bpstore_test.data.model.User_data
+import com.example.bpstore_test.network.retrofit.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,11 +38,10 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerUser(agentid: String, passwd: String) {
-        val user = User_data(agentid, passwd)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response = RetrofitClient.apiService.registerUser(user)
+                val response = RetrofitClient.apiService.registerUser(agentid, passwd)
                 withContext(Dispatchers.Main){
                     if (response.isSuccessful) {
                         Toast.makeText(this@RegisterActivity, "Registeration succssful", Toast.LENGTH_SHORT).show()
