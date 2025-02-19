@@ -3,11 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.activity.MainActivity">
+    tools:context=".ui.fragment.HistoryFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +42,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="#ff19"
+            android:background="@color/bp_blue"
             android:gravity="center"
             android:fontFamily="@font/pretendard_medium"
             android:layout_marginTop="3dp"
@@ -69,19 +67,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:fontFamily="@font/pretendard_medium"
-            android:text="문의 내역조회"
+            android:text="문의내역조회"
             android:textColor="#54aec6"
             android:textSize="30sp"/>
 
 
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/noDataTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="데이터가 없습니다."
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/dataCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="총 건수 : 0건"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:scrollbars="vertical" />
     </LinearLayout>
 
     <LinearLayout
@@ -115,7 +148,7 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/article" />
+                    android:src="@drawable/arpuicon" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -145,7 +178,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/sms_failed"
+                    android:src="@drawable/dangericon"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -184,7 +217,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/help_center"
+                    android:src="@drawable/gayongicon"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -214,7 +247,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/co_present"
+                    android:src="@drawable/etcicon"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"/>
                 <TextView
@@ -254,7 +287,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/content_paste_search"
+                    android:src="@drawable/lgicon"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -284,7 +317,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/question_answer"
+                    android:src="@drawable/historyicon"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"/>
                 <TextView

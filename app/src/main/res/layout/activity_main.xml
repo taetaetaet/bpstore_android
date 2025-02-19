@@ -16,15 +16,16 @@
         app:navGraph="@navigation/bpstore_frag"/>
 
 
-    <Button
+    <ImageView
         android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="52dp"
         android:layout_gravity="center"
-        android:backgroundTint="#ff19"
+        android:background="@drawable/icons8"
+        android:textColor="@color/white"
         android:fontFamily="@font/pretendard_medium"
-        android:text="로그아웃"
-        android:textSize="20sp" />
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="10dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

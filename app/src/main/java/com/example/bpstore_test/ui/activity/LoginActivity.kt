@@ -2,12 +2,12 @@ package com.example.bpstore_test.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bpstore_test.R
+import com.example.bpstore_test.data.model.LoginRequest
 import com.example.bpstore_test.network.retrofit.RetrofitClient
 import com.example.bpstore_test.utils.SharedPreferencesHelper
 import kotlinx.coroutines.CoroutineScope
@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
             if (id.isNotEmpty() && password.isNotEmpty()) {
                 loginUser(id, password)
             } else {
-                Toast.makeText(this, "있는거 다 쳐라", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "아이디와 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -44,7 +44,8 @@ class LoginActivity : AppCompatActivity() {
     private fun loginUser(agentid: String, passwd: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response = RetrofitClient.apiService.loginUser(agentid, passwd)
+                val loginRequest = LoginRequest(agentid, passwd) // JSON 객체 생성
+                val response = RetrofitClient.instance.loginUser(loginRequest) // JSON 전송
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
                         val user = response.body()
@@ -53,19 +54,20 @@ class LoginActivity : AppCompatActivity() {
                             sharedPreferencesHelper.saveLoginStatus(true)
                             sharedPreferencesHelper.saveUserId(agentid)
 
-                            Toast.makeText(this@LoginActivity, "해윙해윙해윙", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "로그인 성공!", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                             finish()
                         } else {
-                            Toast.makeText(this@LoginActivity, "안돼 돌아가", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "로그인 실패: 사용자 정보 없음", Toast.LENGTH_SHORT).show()
                         }
                     } else {
-                        Toast.makeText(this@LoginActivity, "안돼 돌아가", Toast.LENGTH_SHORT).show()
+                        val errorBody = response.errorBody()?.string()
+                        Toast.makeText(this@LoginActivity, "로그인 실패: $errorBody", Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@LoginActivity, "어어 네트웤 공습경보!! ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "네트워크 오류: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }

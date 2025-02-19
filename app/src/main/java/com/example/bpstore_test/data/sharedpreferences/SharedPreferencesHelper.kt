@@ -2,6 +2,7 @@ package com.example.bpstore_test.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 
 class SharedPreferencesHelper(context: Context) {
 
@@ -22,7 +23,7 @@ class SharedPreferencesHelper(context: Context) {
 
     fun getUserId(): String? {
         return sharedPreferences.getString("userId", null)
-    }
+     }
 
     fun logout() {
         sharedPreferences.edit().clear().apply()

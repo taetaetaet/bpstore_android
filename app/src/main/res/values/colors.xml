@@ -4,5 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bp_blue">#54AEC6</color>
     <color name="bp_pink">#CD0672</color>
+        <color name="color_arpu">#ff19</color>
+        <color name="color_lg">#43BD47</color>
+        <color name="color_utility">#82B3FF</color>
+        <color name="color_high_risk">#FF6666</color>
+        <color name="color_etc">#B3B3B3</color>
+        <color name="color_default">#E0E0E0</color>
 
 </resources>

@@ -8,22 +8,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 
 object RetrofitClient {
 
-//    private const val BASE_URL = "http://192.168.0.28:8080/"
-private const val BASE_URL = "http://164.124.101.2:8080/"
+    private const val BASE_URL = "http://192.168.0.28:8080/"
 
+    private val loggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY // 요청 및 응답 본문 로그
+    }
 
-    val apiService: ApiService by lazy {
-        val logging = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(loggingInterceptor)
+        .build()
 
-        val client = OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .build()
-
+    val instance: ApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)

@@ -90,7 +90,7 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/article" />
+                    android:src="@drawable/arpuicon" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -120,7 +120,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/sms_failed"
+                    android:src="@drawable/dangericon"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/help_center"
+                    android:src="@drawable/gayongicon"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/co_present"
+                    android:src="@drawable/etcicon"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"/>
                 <TextView
@@ -229,7 +229,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/content_paste_search"
+                    android:src="@drawable/lgicon"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -259,7 +259,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/question_answer"
+                    android:src="@drawable/historyicon"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"/>
                 <TextView

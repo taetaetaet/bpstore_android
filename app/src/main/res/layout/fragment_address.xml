@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="#ff19"
+            android:background="@color/bp_blue"
             android:gravity="center"
             android:fontFamily="@font/pretendard_medium"
             android:layout_marginTop="3dp"
@@ -96,9 +96,12 @@
                 android:id="@+id/addr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:hint="주소"
                 android:textSize="16sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black">
+            </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -124,11 +127,12 @@
 
         <Button
             android:id="@+id/btnSave"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="저장"
             android:fontFamily="@font/pretendard_medium"
             android:layout_marginTop="16dp"
+            android:layout_marginLeft="100dp"
             android:backgroundTint="#FF19"
             android:textColor="@color/white"
             android:textSize="20sp"/>
@@ -168,7 +172,7 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/article" />
+                    android:src="@drawable/arpuicon" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -198,7 +202,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/sms_failed"
+                    android:src="@drawable/dangericon"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -237,7 +241,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/help_center"
+                    android:src="@drawable/gayongicon"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -267,7 +271,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/co_present"
+                    android:src="@drawable/etcicon"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"/>
                 <TextView
@@ -307,7 +311,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/content_paste_search"
+                    android:src="@drawable/lgicon"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -337,7 +341,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/question_answer"
+                    android:src="@drawable/historyicon"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"/>
                 <TextView

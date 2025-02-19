@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.bpstore_test.R
+import com.example.bpstore_test.data.model.UserBusinessRequest
 import com.example.bpstore_test.network.retrofit.RetrofitClient
 import com.example.bpstore_test.utils.SharedPreferencesHelper
 import com.google.android.material.textfield.TextInputEditText
@@ -32,6 +33,8 @@ class DangerFragment : Fragment(R.layout.fragment_danger) {
         val tel = view.findViewById<TextInputEditText>(R.id.tel)
         val btnSave = view.findViewById<Button>(R.id.btnSave)
 
+        dangerName.requestFocus()
+
         btnSave.setOnClickListener {
             val dangerName = dangerName.text.toString()
             val bsNumber = bsNumber.text.toString()
@@ -49,23 +52,39 @@ class DangerFragment : Fragment(R.layout.fragment_danger) {
                 return@setOnClickListener
             }
 
-            CoroutineScope(Dispatchers.Main).launch {
+            // UserBusinessRequest 객체 생성
+            val userBusinessRequest = UserBusinessRequest(
+                agentid = userId,
+                name = dangerName,
+                b_num = bsNumber,
+                c_num = "",
+                tel = phoneNumber,
+                addr = "",
+                detail_addr = "",
+                r_num = rNumber,
+                etc = "",
+                bz_type = 504
+            )
+
+            CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    val response = RetrofitClient.apiService.saveUserBusiness(
-                        userId, dangerName, bsNumber, "", phoneNumber,"","",rNumber,"",504
-                    )
-                    if (response.isSuccessful) {
-                        Toast.makeText(requireContext(), "저장 성공!", Toast.LENGTH_SHORT).show()
-                        Log.e("ErrorFragment", "Response not successful: ${response.errorBody()?.string()}")
-                    } else {
-                        Toast.makeText(requireContext(), "저장 실패: ${response.message()}", Toast.LENGTH_SHORT).show()
-                        Log.e("ErrorFragment", "Response not successful: ${response.errorBody()?.string()}")
+                    // Retrofit을 통해 서버에 요청
+                    val response = RetrofitClient.instance.saveUserBusiness(userBusinessRequest)
+                    withContext(Dispatchers.Main) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(requireContext(), "저장 성공!", Toast.LENGTH_SHORT).show()
+                        } else {
+                            val errorBody = response.errorBody()?.string()
+                            Toast.makeText(requireContext(), "저장 실패: $errorBody", Toast.LENGTH_SHORT).show()
+                            Log.e("DangerFragment", "Response not successful: $errorBody")
+                        }
                     }
                 } catch (e: Exception) {
-                    Toast.makeText(requireContext(), "네트워크 오류: ${e.message}", Toast.LENGTH_SHORT).show()
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(requireContext(), "네트워크 오류: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
-
         }
         val dangerLayout = view.findViewById<LinearLayout>(R.id.dangerID)
         dangerLayout.setOnClickListener {
