@@ -170,7 +170,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/arpuicon" />
 
@@ -201,7 +201,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="3dp"
                     android:src="@drawable/dangericon"
                     android:scaleType="centerCrop"/>
                 <TextView
@@ -240,7 +240,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:src="@drawable/gayongicon"
                     android:scaleType="centerCrop"/>
                 <TextView
@@ -272,7 +272,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/etcicon"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="3dp"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -310,7 +310,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:src="@drawable/lgicon"
                     android:scaleType="centerCrop"/>
                 <TextView
@@ -342,7 +342,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/historyicon"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="3dp"
                     android:scaleType="centerCrop"/>
                 <TextView
                     android:layout_width="wrap_content"

@@ -1,6 +1,9 @@
 package com.example.bpstore_test.ui.fragment
 
 import android.os.Bundle
+import android.text.InputFilter
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -34,6 +37,57 @@ class ArpuFragment : Fragment(R.layout.fragment_arpu) {
 
         arpuName.requestFocus()
 
+        // 숫자와 '-'만 허용하는 입력 필터
+        val digitAndDashFilter = InputFilter { source, start, end, dest, dstart, dend ->
+            for (i in start until end) {
+                if (!(source[i].isDigit() || source[i] == '-')) {
+                    return@InputFilter ""
+                }
+            }
+            null
+        }
+
+        // 사업자번호: '-' 제외하고 최대 10자리까지만 입력 허용
+        val maxBusinessNumberDigitsFilter = InputFilter { source, start, end, dest, dstart, dend ->
+            val newVal = dest.substring(0, dstart) + source.subSequence(start, end) + dest.substring(dend)
+            if (newVal.filter { it.isDigit() }.length > 10) {
+                ""
+            } else {
+                null
+            }
+        }
+
+        // 청구계정번호: '-' 제외하고 최대 15자리까지만 입력 허용
+        val maxBillingAccountDigitsFilter = InputFilter { source, start, end, dest, dstart, dend ->
+            val newVal = dest.substring(0, dstart) + source.subSequence(start, end) + dest.substring(dend)
+            if (newVal.filter { it.isDigit() }.length > 15) {
+                ""
+            } else {
+                null
+            }
+        }
+
+        // 필터 적용: 사업자번호는 두 필터, 청구계정번호는 두 필터 적용
+        bsNumber.filters = arrayOf(digitAndDashFilter, maxBusinessNumberDigitsFilter)
+        cNumber.filters = arrayOf(digitAndDashFilter, maxBillingAccountDigitsFilter)
+
+        // 사업자번호 자동 포맷 (000-00-00000)
+        bsNumber.addTextChangedListener(object : TextWatcher {
+            private var isEditing = false
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (isEditing) return
+                isEditing = true
+
+                val cleaned = s.toString().replace("-", "")
+                val formatted = formatBusinessNumber(cleaned)
+                bsNumber.setText(formatted)
+                bsNumber.setSelection(formatted.length)
+                isEditing = false
+            }
+            override fun afterTextChanged(s: Editable?) { }
+        })
+
         btnSave.setOnClickListener {
             val customerName = arpuName.text.toString()
             val businessNumber = bsNumber.text.toString()
@@ -50,7 +104,7 @@ class ArpuFragment : Fragment(R.layout.fragment_arpu) {
                 return@setOnClickListener
             }
 
-            // UserBusinessRequest 객체 생성
+            // UserBusinessRequest 객체 생성 (bz_type 501은 Arpu를 의미)
             val userBusinessRequest = UserBusinessRequest(
                 agentid = userId,
                 name = customerName,
@@ -66,7 +120,6 @@ class ArpuFragment : Fragment(R.layout.fragment_arpu) {
 
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    // Retrofit을 통해 서버에 요청
                     val response = RetrofitClient.instance.saveUserBusiness(userBusinessRequest)
                     withContext(Dispatchers.Main) {
                         if (response.isSuccessful) {
@@ -85,7 +138,8 @@ class ArpuFragment : Fragment(R.layout.fragment_arpu) {
             }
         }
 
-       val arpuLayout = view.findViewById<LinearLayout>(R.id.arpuID)
+        // 네비게이션 코드
+        val arpuLayout = view.findViewById<LinearLayout>(R.id.arpuID)
         arpuLayout.setOnClickListener {
             findNavController().navigate(R.id.action_arpuFragment_self)
         }
@@ -108,6 +162,15 @@ class ArpuFragment : Fragment(R.layout.fragment_arpu) {
         val historyLayout = view.findViewById<LinearLayout>(R.id.historyID)
         historyLayout.setOnClickListener {
             findNavController().navigate(R.id.action_arpuFragment_to_historyFragment)
+        }
+    }
+
+    // 사업자번호 포맷 함수 (000-00-00000)
+    private fun formatBusinessNumber(number: String): String {
+        return when {
+            number.length > 5 -> "${number.take(3)}-${number.substring(3, 5)}-${number.drop(5)}"
+            number.length > 3 -> "${number.take(3)}-${number.drop(3)}"
+            else -> number
         }
     }
 }

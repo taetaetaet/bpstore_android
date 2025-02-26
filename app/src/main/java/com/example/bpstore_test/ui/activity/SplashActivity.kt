@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bpstore_test.R
-import com.example.bpstore_test.ui.fragment.FirstFragment
 
 class SplashActivity : AppCompatActivity() {
 
@@ -14,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-            startActivity(Intent(this,   LoginActivity::class.java))
+            startActivity(Intent(this,  MainActivity::class.java))
             finish()
         },2000)
     }

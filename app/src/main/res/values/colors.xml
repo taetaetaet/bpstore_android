@@ -10,5 +10,11 @@
         <color name="color_high_risk">#FF6666</color>
         <color name="color_etc">#B3B3B3</color>
         <color name="color_default">#E0E0E0</color>
+        <color name="light_gray">#E1F6FA</color>
+        <color name="dark_gray">#54AEC6</color>
+    <style name="CustomSpinnerTheme" parent="Widget.AppCompat.Spinner">
+        <item name="android:backgroundTint">@color/light_gray</item>
+        <item name="android:popupBackground">@android:color/darker_gray</item>
+    </style>
 
 </resources>
